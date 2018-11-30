@@ -1,6 +1,5 @@
-/dataset
-/clean_dataset
-/clean_dataset2
-/dataset20
 /environment
 __pycache__/
+*.pc
+*.pyc
+*.pyo

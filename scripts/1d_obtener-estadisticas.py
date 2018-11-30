@@ -23,9 +23,9 @@ def obtener_frecuencias(path, lang):
     return contadores                
                 
 
-frecs_spa = obtener_frecuencias("../clean_dataset2/", "spa")
-frecs_eng = obtener_frecuencias("../clean_dataset2/", "eng")
-frecs_fre = obtener_frecuencias("../clean_dataset2/", "fre")
+frecs_spa = obtener_frecuencias("../clean_dataset/", "spa")
+frecs_eng = obtener_frecuencias("../clean_dataset/", "eng")
+frecs_fre = obtener_frecuencias("../clean_dataset/", "fre")
 
 def comparar(spa, eng, fre):
     generos = ["accion", "romance", "horror"]
@@ -35,3 +35,37 @@ def comparar(spa, eng, fre):
         f = frecs_fre[i][fre]
 
         print("Genero: {0}, Spa: {1}, Eng: {2}, Fre:{3}".format(generos[i], s, e, f))
+
+def intersect_most_common(frecs, n = 100):
+    sets = []
+    for i in range(3):
+        s = set()
+        for k, v in frecs[i].most_common(n):
+            s.add(k)
+        sets.append(s)
+
+    s = sets[0] & sets[1] & sets[2]
+    res = []
+    for elem in s:
+        v = frecs[0][elem] + frecs[1][elem] + frecs[2][elem]
+        res.append((elem, v))
+
+    return sorted(res, key = lambda tup: tup[1], reverse = True)
+
+def disjoin_frecs(frecs, min_frec = 0):
+    sets = []
+    for i in range(3):
+        s = set()
+        for k in list(frecs[i].keys()):
+            if frecs[i][k] > min_frec:
+                s.add(k)
+        sets.append(s)
+
+    s = (sets[0] | sets[1] | sets[2]) - ((sets[0] & sets[1]) | (sets[0] & sets[2]) | (sets[1] & sets[2]))
+    res = []
+    for elem in s:
+        v = frecs[0][elem] + frecs[1][elem] + frecs[2][elem]
+        res.append((elem, v))
+
+    return sorted(res, key = lambda tup: tup[1], reverse = True)
+

@@ -55,13 +55,13 @@ def clean_files(inpath, outpath, lang, stw_path):
 
 
 print("Español")
-stw_spa_path = "../wordlists/stopwords_spanish.txt"
-clean_files("../dataset20/", "../clean_dataset2/", "spa", stw_spa_path)
+stw_spa_path = "wordlists/stopwords_spanish.txt"
+clean_files("original_dataset/", "../clean_dataset/", "spa", stw_spa_path)
 
 print("Inglés")
-stw_spa_path = "../wordlists/stopwords_english.txt"
-clean_files("../dataset20/", "../clean_dataset2/", "eng", stw_spa_path)
+stw_spa_path = "wordlists/stopwords_english.txt"
+clean_files("original_dataset/", "../clean_dataset/", "eng", stw_spa_path)
 
 print("Francés")
-stw_spa_path = "../wordlists/stopwords_french.txt"
-clean_files("../dataset20/", "../clean_dataset2/", "fre", stw_spa_path)
+stw_spa_path = "wordlists/stopwords_french.txt"
+clean_files("original_dataset/", "../clean_dataset/", "fre", stw_spa_path)

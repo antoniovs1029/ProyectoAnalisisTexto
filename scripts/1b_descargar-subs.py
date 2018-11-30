@@ -32,7 +32,7 @@ def descargar_subs_de_lista(listfile, outputpath, min_line = 0, max_line = 10):
             print("Descargando #{0} - {1}".format(i, movieid))
             descargar_sub(movieid, outputpath, ost = ost)
 
-descargar_subs_de_lista('imdbids_horror.txt', "./dataset/2/", min_line = 20, max_line = 50)
+descargar_subs_de_lista('imdbids_horror.txt', "./dataset/2/", min_line = 50, max_line = 100)
 
 ############ PLAN DE DESCARGA ###############
 # Sigue horror del 35 al 50
