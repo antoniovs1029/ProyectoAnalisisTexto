@@ -37,7 +37,11 @@ def clean_file(inpath, outpath, lemmatizer, stopwords):
 def clean_files(inpath, outpath, lang, stw_path):
     freeling_langs = {"spa":"es", "fre": "fr", "eng":"en"}
     lemmatizer = MyFreelingLemmatizer(freeling_langs[lang])
-    stopwords = load_stopwords(stw_path)
+
+    if stw_path is None:
+        stopwords = []
+    else:
+        stopwords = load_stopwords(stw_path)
 
     for label in ["0/", "1/", "2/"]:
         directory = os.path.join(inpath, label)
@@ -55,13 +59,14 @@ def clean_files(inpath, outpath, lang, stw_path):
 
 
 print("Español")
-stw_spa_path = "wordlists/stopwords_spanish.txt"
-clean_files("original_dataset/", "../clean_dataset/", "spa", stw_spa_path)
+stw_spa_path = None # Mejor no usar stopwords sino hasta experimentar con la obtención de tópicos
+# stw_spa_path = "wordlists/stopwords_spanish.txt"
+clean_files("dataset/", "../clean_dataset/", "spa", stw_spa_path)
 
 print("Inglés")
-stw_spa_path = "wordlists/stopwords_english.txt"
-clean_files("original_dataset/", "../clean_dataset/", "eng", stw_spa_path)
+# stw_spa_path = "wordlists/stopwords_english.txt"
+clean_files("dataset/", "../clean_dataset/", "eng", stw_spa_path)
 
 print("Francés")
-stw_spa_path = "wordlists/stopwords_french.txt"
-clean_files("original_dataset/", "../clean_dataset/", "fre", stw_spa_path)
+# stw_spa_path = "wordlists/stopwords_french.txt"
+clean_files("dataset/", "../clean_dataset/", "fre", stw_spa_path)
